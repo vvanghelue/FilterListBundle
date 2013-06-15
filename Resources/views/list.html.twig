@@ -1,0 +1,9 @@
+<div id="filterListContainer"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var options = {{ filterListOptions|raw }};
+		options.container = $('#filterListContainer');
+		var list = new TessiFilterList(options);
+		list.initialize();
+	});
+</script>
