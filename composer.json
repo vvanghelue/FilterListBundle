@@ -1,5 +1,5 @@
 {
-    "name": "vvanghelue/filterlist-bundle",
+    "name": "vvg/filterlist-bundle",
     "type": "symfony-bundle",
     "description": "Bundle to generate dynamic filtered (client-side) lists using jQuery.",
     "keywords": ["list", "doctrine", "ajax", "pagination"],
