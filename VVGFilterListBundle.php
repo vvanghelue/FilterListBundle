@@ -1,6 +1,6 @@
 <?php
 
-namespace VVG\FilterListBundle;
+namespace VVG\Bundle\FilterListBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
