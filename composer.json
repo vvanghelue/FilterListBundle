@@ -1,10 +1,10 @@
 {
-    "name": "vvanghelue/FilterListBundle",
+    "name": "vvanghelue/filterlist-bundle",
     "type": "symfony-bundle",
-    "description": "Bundle to generate dinamic filtered lists.",
+    "description": "Bundle to generate dynamic filtered (client-side) lists using jQuery.",
     "keywords": ["list", "doctrine", "ajax", "pagination"],
-    "homepage": "https://github.com/vvanghelue/FilterListBundle",
-    "license": "MIT",
+    "homepage": "https://github.com/vvanghelue/filterlist-bundle",
+    "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Vincent Van Ghelue",
@@ -12,14 +12,13 @@
         }
     ],
     "require": {
-
-    },
-    "require-dev": {
-
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": ">=2.1,<2.3-dev",
+        "doctrine/doctrine-bundle": "*"
     },
     "autoload": {
-        "psr-0": { "VVG\\FilterListBundle": "" }
+        "psr-0": { "VVG\\Bundle\\FilterListBundle": "" }
     },
     "minimum-stability": "dev",
-    "target-dir": "VVG/FilterListBundle"
+    "target-dir": "VVG/Bundle/FilterListBundle"
 }

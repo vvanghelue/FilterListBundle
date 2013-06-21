@@ -1,37 +1,40 @@
-Declare the manifest class
---------------------------
+FilterLitstBundle
+=================
 
-<pre>
-namespace My\Pretty\Namespace;
-
-
-use VVG\FilterListBundle\FilterList\FilterListBase;
-use VVG\FilterListBundle\Field\FilterListField;
+Symfony2 bundle generating dynamic filtered (client-side) lists using jQuery.
 
 
-class PrettyilterList extends FilterListBase 
-{
-  public function configureFields()
-    {
+Installation
+===========
+
+To install this bundle please follow the next steps:
+
+First add the dependencies to your `composer.json` file:
+
+```json
+"require": {
     ...
-    }
-}
+    "vvg/filterlist-bundle": "dev-master"
+},
+```
 
-</pre>
+Then install the bundle with the command:
 
-Usage in controllers
---------------------
+```sh
+php composer update
+```
 
-<pre>
-/**
- * @Route("/pretty/list", name="Admin_pretty_list")
- * @Template()
- */
-public function listeAction()
+Enable the bundle in your application kernel:
+
+```php
+<?php
+// app/AppKernel.php
+
+public function registerBundles()
 {
-    $request = $this->get('request');
-    return $this->get('filterlist')
-                ->loadList(new PrettyFilterList())
-                ->bindRequest($request);
+    $bundles = array(
+        // ...
+        new VVG\Bundle\FilterListBundle\VVGFilterListBundle(),
+    );
 }
-</pre>
+```
