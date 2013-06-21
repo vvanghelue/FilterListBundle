@@ -1,8 +1,7 @@
 Declare the manifest class
 --------------------------
 
-<?php
-
+<pre>
 namespace My\Pretty\Namespace;
 
 
@@ -13,13 +12,17 @@ use VVG\FilterListBundle\Field\FilterListField;
 class PrettyilterList extends FilterListBase 
 {
   public function configureFields()
-	{
+    {
     ...
-  }
+    }
+}
+
+</pre>
 
 Usage in controllers
 --------------------
 
+<pre>
 /**
  * @Route("/pretty/list", name="Admin_pretty_list")
  * @Template()
@@ -31,3 +34,4 @@ public function listeAction()
                 ->loadList(new PrettyFilterList())
                 ->bindRequest($request);
 }
+</pre>
