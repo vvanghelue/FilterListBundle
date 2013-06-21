@@ -1,6 +1,6 @@
 <?php
 
-namespace VVG\FilterListBundle\FilterList;
+namespace VVG\Bundle\FilterListBundle\FilterList;
 
 use VVG\FilterListBundle\Field\FilterListField as Field;
 use Doctrine\Bundle\DoctrineBundle\Registry as DoctrineRegistry;

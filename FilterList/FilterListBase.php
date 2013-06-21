@@ -1,6 +1,6 @@
 <?php
 
-namespace VVG\FilterListBundle\FilterList;
+namespace VVG\Bundle\FilterListBundle\FilterList;
 
 
 use Symfony\Component\HttpFoundation\Response;
@@ -213,9 +213,12 @@ abstract class FilterListBase implements FilterListInterface
 	protected function getTotalCount()
 	{
 		$qb = clone $this->getQueryBuilder();
-		return (int) $totalNbResults = $qb->select($this->getTotalCountResult())
- 		->getQuery()
- 		->getSingleScalarResult();
+
+		return (int) $totalNbResults = $qb
+			->select($this->getTotalCountResult())
+ 			->getQuery()
+ 			->getSingleScalarResult()
+ 		;
 	}
 	
 	public function hrefLink($result)

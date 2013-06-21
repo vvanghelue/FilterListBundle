@@ -1,6 +1,6 @@
 <?php
 
-namespace VVG\FilterListBundle\Field;
+namespace VVG\Bundle\FilterListBundle\Field;
 
 class FilterListField {
 
