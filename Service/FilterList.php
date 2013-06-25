@@ -1,6 +1,6 @@
 <?php
 
-namespace VVG\FilterListBundle\Service;
+namespace VVG\Bundle\FilterListBundle\Service;
 
 class FilterList {
 	
