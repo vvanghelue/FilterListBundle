@@ -4,8 +4,8 @@ namespace VVG\Bundle\FilterListBundle\FilterList;
 
 
 use Symfony\Component\HttpFoundation\Response;
-use VVG\FilterListBundle\FilterList\FilterListInterface;
-use VVG\FilterListBundle\Field\FilterListField;
+use VVG\Bundle\FilterListBundle\FilterList\FilterListInterface;
+use VVG\Bundle\FilterListBundle\Field\FilterListField;
 use Doctrine\Bundle\DoctrineBundle\Registry as DoctrineRegistry;
 use Doctrine\ORM\QueryBuilder;
 
