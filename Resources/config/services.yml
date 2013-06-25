@@ -1,0 +1,3 @@
+filterlist:
+    class:        VVG\Bundle\FilterListBundle\Service\FilterList
+    arguments:    [@doctrine, @router]
