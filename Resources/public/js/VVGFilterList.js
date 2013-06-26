@@ -70,12 +70,8 @@
 				return $('<span></span>');
 
 			var selectEvents = $('<select></select>');
+			var option       = $('<option></option>');
 			
-			var option = new Element('option', {
-				'value' : '',
-				'html'  : ''
-			});
-
 			selectEvents.append(option);
 
 			$.each(this.options.events, function(k, v){
