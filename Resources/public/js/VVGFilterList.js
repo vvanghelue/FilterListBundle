@@ -71,7 +71,7 @@
 
 			var selectEvents = $('<select></select>');
 			var option       = $('<option></option>');
-			
+
 			selectEvents.append(option);
 
 			$.each(this.options.events, function(k, v){
@@ -120,16 +120,19 @@
 			this.displayLoader();
 			
 			var that = this;
-			new Request.JSON({
-				'url'    : that.options.route,
+
+			$.ajax({
 				'method' : 'get',
+				'url'    : that.options.route,
+				'noCache': true,
 				'data'   : data,
-				onSuccess : function(result) {
+				'dataType'   : 'JSON',
+				success : function(result) {
 					alert(result.message);
 					that.hideLoader();
 					that.update();
 				}
-			}).send();
+			});
 		};
 		
 		this.getActionIdsQuery = function(ids) {
