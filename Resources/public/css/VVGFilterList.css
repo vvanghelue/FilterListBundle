@@ -135,8 +135,13 @@
 		font-size:12px;
 		padding:5px;
 	}
-	table.TessiFilterListTable tr td.checkall{
+	table.TessiFilterListTable tr th.checkall{
 		width:18px;
+		background-color:white;
+		border:none;
+		padding:0px;
+		text-align:left;
+		padding-left:11px;
 	}
 	
 	table.TessiFilterListTable tr td.paging{

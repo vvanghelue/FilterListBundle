@@ -43,19 +43,18 @@
 			this.tableB   = $('<table class="TessiFilterListTable"></table>');
 			this.table    =  $('<tbody></tbody>');
 			var tableHead = $('<tr></tr>')
-			var td        = $('<td table="checkall"></td>');
+			var td        = $('<th class="checkall"></th>');
 			
 			var that = this;
 
 			this.checkbox = $('<input type="checkbox"/>');
+			
 			this.checkbox.click(function() {
-				var checked = this.attr('checked');
-				that.element.find('input[class=selectCheckbox]').each(function(el) {
-					el.attr('checked', checked);
-				});
+				var checked = $(this).is(":checked");
+				that.element.find('input[class=selectCheckbox]').prop('checked', checked);
 			});
 
-			if(this.options.events > 0) {
+			if(Object.keys(this.options.events).length > 0) {
 				tableHead.append(td.append(this.checkbox));
 			}
 							
@@ -70,39 +69,32 @@
 			if(this.options.events.length == 0)
 				return $('<span></span>');
 
-			var selectEvents = new Element('select');
+			var selectEvents = $('<select></select>');
 			
 			var option = new Element('option', {
 				'value' : '',
 				'html'  : ''
 			});
-			selectEvents.grab(option);
-				
-			Object.each(this.options.events, function(v, k) {
-				var option = new Element('option', {
-					'value' : k,
-					'html'  : v
-				});
-				selectEvents.grab(option);
+
+			selectEvents.append(option);
+
+			$.each(this.options.events, function(k, v){
+				var option = $('<option>').attr('value', k);
+				option.html(v);
+				selectEvents.append(option);
 			});
 			
 			var that = this;
-			var applyActionButton = new Element('button', {
-				'html'   : 'Appliquer',
-				'events' : {
-					'click' : function(){
-						var action = selectEvents.getSelected().get('value');
-						if(action != '')
-							that.eventAction(action);
-						else
-							alert("Veuiller choisir une action à appliquer");
-					}
-				}
+
+			var applyActionButton = $('<button>Appliquer</button>');
+			applyActionButton.click(function(){
+
+				that.eventAction(selectEvents.val());
 			});
-			
-			this.options.container.grab(new Element('div', {'class' : 'spacer'}).setStyle('height', '5px'));
-			this.options.container.grab(selectEvents);
-			this.options.container.grab(applyActionButton);
+
+			this.options.container.append($('<div class="spacer"></div>').css('height', '5px'));
+			this.options.container.append(selectEvents);
+			this.options.container.append(applyActionButton);
 		};
 		
 		this.injectElement = function(){
@@ -111,24 +103,29 @@
 		
 		this.eventAction = function(action) {
 			var ids = [];
-			this.element.getElements('input[class=selectCheckbox]').each(function(checkbox) {
-				if(checkbox.get('checked'))
-					ids.push(parseInt(checkbox.get('rel')));
+			$.each(this.element.find('input[class=selectCheckbox]'), function(i, checkbox) {
+				if($(checkbox).is(':checked'))
+					ids.push($(checkbox).attr('rel'));
 			});
 			
 			if(ids.length == 0) {
 				alert('Veuillez sélectionner des éléments pour appliquer une action');
 				return;
 			}
+
+			if(action.length == 0) {
+				alert('Veuillez sélectionner une action a appliquer');
+				return;
+			}
 			
 			var data = 'action=' + action;
-			data += this.getActionIdsQuery(ids); 
+			data     += this.getActionIdsQuery(ids); 
 			
 			this.displayLoader();
 			
 			var that = this;
 			new Request.JSON({
-				'url'    : '',
+				'url'    : that.options.route,
 				'method' : 'get',
 				'data'   : data,
 				onSuccess : function(result) {
@@ -181,10 +178,10 @@
 							var primary = results.data[i].primary;
 							
 							
-							var checkbox = $('<input type="checkbox", class="checkbox">');
+							var checkbox = $('<input type="checkbox", class="selectCheckbox">');
 							checkbox.attr('rel', primary);
 
-							if(that.options.events > 0) {
+							if(Object.keys(that.options.events).length > 0) {
 								tr.append(td.append(checkbox));
 							}
 
@@ -442,6 +439,9 @@
 		};
 	};
 	
+
+
+
 	var TessiFilterListPaging = function(filterListInstance) {
 		
 		this.filterListInstance = filterListInstance;
