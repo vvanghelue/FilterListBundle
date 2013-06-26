@@ -162,7 +162,7 @@
 			var that = this;
 			$.ajax({
 				'method' : 'get',
-				'url'    : '',
+				'url'    : that.options.route,
 				'noCache': true,
 				'data'   : data,
 				'dataType'   : 'JSON',

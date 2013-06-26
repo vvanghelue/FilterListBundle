@@ -76,7 +76,7 @@ abstract class FilterListBase implements FilterListInterface
 		return $this->fields;
 	}
 		
-	public function bindRequest(&$request, $responseValues = array())
+	public function bindRequest(&$request)
 	{
         $getList = $request->query->get('getList');
 		$action  = $request->query->get('action');
@@ -85,21 +85,24 @@ abstract class FilterListBase implements FilterListInterface
 			return $this->getList($request);
 		else if ($action)
 			return $this->processAction($request);
-		else
-			return $this->initializeFilterList($responseValues);
+		
+		throw new \Exception("FilterList don't know what to bind !");
 	}
 	
-	protected function initializeFilterList($responseValues)
+	public function initializeFilterList()
 	{
 		$fields = $this->getFieldsData();
 			
 		$options = json_encode(array(
-			'route'   => '', 
+			'route'   => $this->getAjaxRoute(), 
 			'fields'  => $fields,
 			'options' => array(),
 			'events'  => $this->getEvents()
 		));
-		return array_merge(array('filterListOptions' => $options), $responseValues);
+
+		return $options;
+
+		return array_merge(array('filterListOptions' => $options));
 	}
 	
 	protected function getFieldsData()
@@ -229,5 +232,15 @@ abstract class FilterListBase implements FilterListInterface
 	public function getEvents()
 	{
 		return array();
+	}
+
+	public function setAjaxRoute($ajaxRoute)
+	{
+		$this->ajaxRoute = $ajaxRoute;
+	}
+
+	public function getAjaxRoute()
+	{
+		return $this->ajaxRoute;
 	}
 }
