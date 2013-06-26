@@ -470,7 +470,20 @@
 			
 			this.element.append(this.getLastPageElement());
 			
+			this.element.append(this.getRefreshButton());
+			
 			this.element.append(this.getResultPerPageElement());
+		};
+		
+		this.getRefreshButton = function() {
+			var refreshButton = $('<img/>').attr('src', 'http://png-2.findicons.com/files/icons/2652/gentleface/16/refresh_icon.png')
+											.css({'float': 'right', 'margin-left': '10px', 'margin-top': '7px'});
+			var that = this;
+			refreshButton.click(function() {
+				that.filterListInstance.update();
+			});
+			
+			return refreshButton;
 		};
 		
 		this.getResultPerPageElement = function() {
