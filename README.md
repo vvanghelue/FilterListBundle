@@ -230,5 +230,5 @@ Usage in views:
     
     
     <!-- Put this in your views -->
-    {% include 'VVGFilterListBundle::list.html.twig' with {'data': tasksList, 'listName' : 'Tasks'} %}
+    {% include 'VVGFilterListBundle::list.html.twig' with {'data': fancyList, 'listName' : 'myFancyList'} %}
 ```
