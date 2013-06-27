@@ -60,17 +60,32 @@ use VVG\Bundle\FilterListBundle\Field\FilterListField;
 class RunningTasks extends FilterListBase 
 {
     public function configureFields()
-	{
-    ...
+    {
+	$field = new FilterListField();
+	$field->setName('name');
+	$field->setIsFiltrable(true);
+	$field->setIsSortable(true);
+	$field->setDisplayName('Product name');
+	$this->addField($field);
+	
+	$field = new FilterListField();
+	$field->setName('creation_date');
+	$field->setIsFiltrable(true);
+	$field->setIsSortable(true);
+	$field->setDisplayName('Creation date');
+	$this->addField($field);
+	
+	...
     }
+    
     public function configureRepository()
     {
-		$repo = $this->getDoctrine()->getManager()->getRepository('CommerceBundle:Product');
-		$this->setRepository($repo);
-	}
+        $repo = $this->getDoctrine()->getManager()->getRepository('CommerceBundle:Product');
+        $this->setRepository($repo);
+    }
 	
-	public function configureQuery()
-	{
+    public function configureQuery()
+    {
     ...
     }
 }
