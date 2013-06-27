@@ -3,6 +3,8 @@ FilterLitstBundle
 
 Symfony2 bundle generating dynamic filtered (client-side) lists using jQuery.
 
+Your filtered list are builded using a behavior class binded in controllers.
+
 
 Installation
 ===========
