@@ -6,7 +6,6 @@ namespace VVG\Bundle\FilterListBundle\FilterList;
 use Symfony\Component\HttpFoundation\Response;
 use VVG\Bundle\FilterListBundle\FilterList\FilterListInterface;
 use VVG\Bundle\FilterListBundle\Field\FilterListField;
-use Doctrine\Bundle\DoctrineBundle\Registry as DoctrineRegistry;
 use Doctrine\ORM\QueryBuilder;
 
 abstract class FilterListBase implements FilterListInterface
@@ -28,7 +27,7 @@ abstract class FilterListBase implements FilterListInterface
 
 	protected $_router;
 	
-	public function setDoctrine(DoctrineRegistry &$doctrineInstance)
+	public function setDoctrine(&$doctrineInstance)
 	{
 		$this->_doctrine = $doctrineInstance;
 	}
