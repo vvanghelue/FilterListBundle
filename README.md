@@ -51,15 +51,16 @@ Declare the behavior class
 
 ```php
 <?php
+//src/App/StoreBundle/FilterList/FancyList.php
 
-namespace Tessi\JobBundle\FilterList;
+namespace App\StoreBundle\FilterList;
 
 
 use VVG\Bundle\FilterListBundle\FilterList\FilterListBase;
 use VVG\Bundle\FilterListBundle\Field\FilterListField;
 
 
-class RunningTasks extends FilterListBase 
+class FancyList extends FilterListBase 
 {
     public function configureFields()
     {
@@ -190,7 +191,7 @@ class RunningTasks extends FilterListBase
 Usage in controllers:
 
 ```php
-    #Your\Application\Controller\DefaultController.php
+    //src/App/StoreBundle/Controller/DefaultController.php
     
     /**
 	 * @Route("/admin/fancy_list", name="Admin_fancy_list")
@@ -224,7 +225,7 @@ Usage in controllers:
 Usage in views:
 
 ```html
-    <!-- Put this in your layout -->
+    <!-- Put this in your layout or view -->
     <link rel="stylesheet" href="{{ asset('bundles/vvgfilterlist/css/VVGFilterList.css') }}" />
     <script src="{{ asset('bundles/vvgfilterlist/js/VVGFilterList.js') }}"></script>
     
