@@ -3,13 +3,12 @@
 namespace VVG\Bundle\FilterListBundle\FilterList;
 
 use VVG\FilterListBundle\Field\FilterListField as Field;
-use Doctrine\Bundle\DoctrineBundle\Registry as DoctrineRegistry;
 
 interface FilterListInterface
 {
 	public function configureFields();
 	
-	public function setDoctrine(DoctrineRegistry &$doctrineInstance);
+	public function setDoctrine(&$doctrineInstance);
 	
 	public function getDoctrine();
 	
