@@ -77,7 +77,7 @@ class RunningTasks extends FilterListBase
         $field->setDisplayName('Product name');
         $this->addField($field);
 	
-	$field = new FilterListField();
+        $field = new FilterListField();
         $field->setName('store_name');
         $field->setIsFiltrable(true);
         $field->setIsSortable(true);
